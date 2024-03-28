@@ -4,7 +4,7 @@
   "description": "Websockets provider for Yjs modified to use Socket.io",
   "main": "./dist/y-websocket-socketio.cjs",
   "module": "./src/y-websocket-socketio.js",
-  "types": "./dist/src/y-websocket.d.ts",
+  "types": "./dist/src/y-websocket-socketio.d.ts",
   "sideEffects": false,
   "funding": {
     "type": "GitHub Sponsors ❤",
@@ -15,7 +15,7 @@
     "dist": "rm -rf dist && rollup -c && tsc",
     "lint": "standard && tsc",
     "test": "npm run lint",
-    "preversion": "npm run lint && npm run dist && test -e dist/src/y-websocket.d.ts && test -e dist/y-websocket.cjs"
+    "preversion": "npm run lint && npm run dist && test -e dist/src/y-websocket-socketio.d.ts && test -e dist/y-websocket-socketio.cjs"
   },
   "bin": {
     "y-websocket-server": "./bin/server.js",
@@ -31,8 +31,8 @@
     "./bin/utils": "./bin/utils.js",
     "./bin/callback": "./bin/callback.js",
     ".": {
-      "import": "./src/y-websocket.js",
-      "require": "./dist/y-websocket.cjs"
+      "import": "./src/y-websocket-socketio.js",
+      "require": "./dist/y-websocket-socketio.cjs"
     }
   },
   "repository": {
