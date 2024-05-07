@@ -265,8 +265,8 @@ exports.setupWSConnection = (socket, {docName=socket.request._query.roomname, gc
   const doc = getYDoc(docName, gc)
   doc.conns.set(conn, new Set())
   // listen and reply to events
-  socket.on('message',
-    /** @param {ArrayBuffer} message */ message => messageListener(socket, doc,
+  conn.on('message',
+    /** @param {ArrayBuffer} message */ message => messageListener(conn, doc,
       new Uint8Array(message)))
 
   conn.on('close', () => {
