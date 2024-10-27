@@ -3,15 +3,18 @@
 /**
  * @type {any}
  */
-const WebSocket = require('ws')
-const http = require('http')
+const https = require('https')
 const socketIo = require("socket.io");
+const fs = require("fs");
 const setupWSConnection = require('./utils.js').setupWSConnection
 
 const host = process.env.HOST || '0.0.0.0'
 const port = process.env.PORT || 3000
 
-const server = http.createServer((request, response) => {
+const key = readFileSync("./bin/private.key");
+const cert = readFileSync("./bin/certificate.crt");
+
+const server = https.createServer({key, cert},(request, response) => {
   response.writeHead(200, { 'Content-Type': 'text/plain' })
   response.end('okay')
 })

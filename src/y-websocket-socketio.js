@@ -142,6 +142,7 @@ const setupWS = (provider) => {
   if (provider.shouldConnect && provider.ws === null) {
     const socket = provider._WS(provider.serverUrl, {
       transports: ['websocket'],
+      rejectUnauthorized: false,
       query: `roomname=${provider.roomname}`,
     });
 
